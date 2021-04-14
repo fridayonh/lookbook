@@ -1,64 +1,39 @@
-name: lookbook
+name: youth(中青看点)
 
 on:
   workflow_dispatch:
   schedule:
      - cron: '2 2-16/4 * * *'
   watch:
-    types: started
-#env:
-  #TZ: Asia/Shanghai
+    types: youth
 
 jobs:
-  build1:
-    env:
-      duilie: 1
-      PUSH_KEY: ${{ secrets.PUSH_KEY }}
-      BARK_PUSH: ${{ secrets.BARK_PUSH }}
-
-
-    runs-on: ubuntu-latest    
-    if: github.event.repository.owner.id == github.event.sender.id
-    steps:
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-      - name: npm install
-        run: |
-          npm install -g npm
-          npm update
-      - name: '运行 【book1】'
-        run: |
-          node Task/book.js
-        env:
-          duilie: 1
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-
-
-  build2:
-    env:
-      duilie: 2
-      PUSH_KEY: ${{ secrets.PUSH_KEY }}
-      BARK_PUSH: ${{ secrets.BARK_PUSH }}
-
-
+  build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
+        YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY }}
+        YOUTH_REDBODY: ${{ secrets.YOUTH_REDBODY }}
+        YOUTH_TIME: ${{ secrets.YOUTH_TIME }}
     steps:
+      - uses: actions/checkout@v1
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-          npm install -g npm
-          npm update
-      - name: '运行 【book2】'
+          npm install
+      - name: '运行 【中青看点】'
         run: |
           node Task/book.js
         env:
-          duilie: 2
+          YOUTH_NOTIFY_CONTROL: ${{ secrets.YOUTH_NOTIFY_CONTROL }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
