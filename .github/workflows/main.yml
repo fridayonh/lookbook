@@ -1,11 +1,11 @@
-name: youth(中青看点)
+name: lookbook
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '2 2-16/4 * * *'
+     - cron: '2 2-16/2 * * *'
   watch:
-    types: youth
+    types: book
 
 jobs:
   build:
@@ -21,11 +21,10 @@ jobs:
         run: |
           npm install
           npm install got #tough-cookie
-      - name: '运行 【中青看点】'
+      - name: '运行 【lookbook】'
         run: |
           node Task/book.js
         env:
-          YOUTH_NOTIFY_CONTROL: ${{ secrets.YOUTH_NOTIFY_CONTROL }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
