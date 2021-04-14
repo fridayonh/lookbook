@@ -19,7 +19,8 @@ jobs:
           node-version: 12.x
       - name: npm install
         run: |
-          npm install
+          npm install -g npm
+          npm update
       - name: '运行 【中青看点】'
         run: |
           node Task/book.js
