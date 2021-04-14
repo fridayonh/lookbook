@@ -1,36 +1,64 @@
-# This is a basic workflow to help you get started with Actions
+name: lookbook
 
-name: CI
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  schedule:
+     - cron: '2 2-16/4 * * *'
+  watch:
+    types: started
+#env:
+  #TZ: Asia/Shanghai
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  build1:
+    env:
+      duilie: 1
+      PUSH_KEY: ${{ secrets.PUSH_KEY }}
+      BARK_PUSH: ${{ secrets.BARK_PUSH }}
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+
+    runs-on: ubuntu-latest    
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          npm install -g npm
+          npm update
+      - name: '运行 【book1】'
+        run: |
+          node Task/book.js
+        env:
+          duilie: 1
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+
+
+  build2:
+    env:
+      duilie: 2
+      PUSH_KEY: ${{ secrets.PUSH_KEY }}
+      BARK_PUSH: ${{ secrets.BARK_PUSH }}
+
+
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install -g npm
+          npm update
+      - name: '运行 【book2】'
+        run: |
+          node Task/book.js
+        env:
+          duilie: 2
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
