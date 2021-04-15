@@ -41,7 +41,7 @@ hostname = m.*
 
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
-let fqkk = $.getjson('fqkk', [])
+let fqkk = $.getjson('{"fqkk":"[\n  {\n    \"uid\": 3964474,\n    \"url\": \"http://m.eas5y.bar/reada/getTask\",\n    \"hd\": \"{\\\"Accept\\\":\\\"*/*\\\",\\\"Proxy-Connection\\\":\\\"keep-alive\\\",\\\"X-Requested-With\\\":\\\"XMLHttpRequest\\\",\\\"Host\\\":\\\"m.eas5y.bar\\\",\\\"Accept-Language\\\":\\\"zh-cn\\\",\\\"Accept-Encoding\\\":\\\"gzip, deflate\\\",\\\"Origin\\\":\\\"http://m.eas5y.bar\\\",\\\"User-Agent\\\":\\\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.4(0x18000426) NetType/WIFI Language/zh_CN\\\",\\\"Connection\\\":\\\"keep-alive\\\",\\\"Referer\\\":\\\"http://m.eas5y.bar/reada?upuid=3989405\\\",\\\"Content-Length\\\":\\\"0\\\",\\\"Cookie\\\":\\\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1618420182; Hm_lvt_84099950848427564e5e4b4310ad032e=1618420182; udtauth=f698tmVtwACln2QfNhWpREgYlElyEWNOknAzKM%2BYRN1%2Bmzja7kfoZfCYq6uMh2Y69bntM4NEAopcdTizsN5afX9dPqN8Dx%2BHE3bC1nK2j1qJnkp%2Fb5ZIp8yU2z659ATbmSIeq0A%2B2aMESRgFeWVmPcl4fUnbi89jAz6BgZvFVYg; PHPSESSID=jbj05sl82eqpu1t4kovs5lvnsi\\\"}\"\n  }\n]"}', [])
 let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'false' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let fqkkCkMoveFlag = $.getval('fqkkCkMove') || ''
 let fqtx = ($.getval('fqtx') || '100');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
