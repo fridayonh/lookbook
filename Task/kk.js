@@ -62,7 +62,7 @@ if ($.isNode()) {
    console.log(`您选择的是用"#"隔开\n`)
   }
   else if (process.env.FQKKHD && process.env.FQKKHD.indexOf('\n') > -1) {
-   fqkkhdArr = process.env.FQKKHD.;
+   fqkkhdArr = process.env.FQKKHD;
    console.log(`您选择的是用换行隔开\n`)
   } else {
    fqkkhdArr = process.env.FQKKHD
