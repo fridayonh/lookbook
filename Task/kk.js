@@ -47,25 +47,25 @@ let fqtx = ($.getval('fqtx') || '100');  // 此处修改提现金额，0.1元等
 var zz = ''
 
 if ($.isNode()) {
-   if (process.env.FQKK_URL && process.env.FQKK_URL.indexOf('#') > -1) {
-   fqkkurlArr = process.env.FQKKURL.split('#');
+   if (process.env.FQKKURL && process.env.FQKKURL.indexOf('#') > -1) {
+   fqkkurlArr = process.env.FQKKURL;
    console.log(`您选择的是用"#"隔开\n`)
   }
   else if (process.env.FQKKURL && process.env.FQKKURL.indexOf('\n') > -1) {
-   fqkkurlArr = process.env.FQKKURL.split('\n');
+   fqkkurlArr = process.env.FQKKURL;
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   fqkkurlArr = process.env.FQKKURL.split()
+   fqkkurlArr = process.env.FQKKURL
   };
   if (process.env.FQKKHD && process.env.FQKKHD.indexOf('#') > -1) {
-   fqkkhdArr = process.env.FQKKHD.split('#');
+   fqkkhdArr = process.env.FQKKHD;
    console.log(`您选择的是用"#"隔开\n`)
   }
   else if (process.env.FQKKHD && process.env.FQKKHD.indexOf('\n') > -1) {
-   fqkkhdArr = process.env.FQKKHD.split('\n');
+   fqkkhdArr = process.env.FQKKHD.;
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   fqkkhdArr = process.env.FQKKHD.split()
+   fqkkhdArr = process.env.FQKKHD
   };
 /*  if (process.env.RLBODY && process.env.RLBODY.indexOf('#') > -1) {
    rlbody = process.env.RLBODY.split('#');
